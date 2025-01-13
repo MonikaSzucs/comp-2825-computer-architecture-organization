@@ -12,7 +12,11 @@ Chapter 4: pg 245**, 292, 307**
 Chapter 5: 366
 Chapter 7: 527
 
-final exam is not cumulative
+## Quiz
+- we would have a quiz every class. It will start near the end of class. 
+
+## Final Exam
+- is not cumulative
 
 ## Group
 - zbones

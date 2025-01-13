@@ -2,13 +2,14 @@
 
 John Von Neumann
 - talk about him
+- your computer is the result of many companies: simpler, cheaper, backwards compatible
 
 `Bit`: binary digit 0 or 1
 `byte`: 8-bit word
 `Word`: size: 64 bits probably; the size depends on the size of a register
 `Register`: fast cpu memory; by definition it stores a single word (an instruction, ad address, an operand)
 - 32 bit vs 64 bit: 2^64 = 2^32 * 2^32
-`cpu`: central processing unit; FDE cycle - fetches, decodes, and executes instructions
+`cpu`: central processing unit; FDE (Fetch-decode-execute) cycle - fetches, decodes, and executes instructions
 `RAM`: Random access memory; main memory; 
 `Bus`: a common electrical pathway along which data moves between devices
 
@@ -31,8 +32,12 @@ Level 5
 - easier for humans
 - harder for computers
 - programs get smaller
+Level 0
+- easier for computers
+- harder for humans
+- program gets larger
 
-- The same program we write at level 5, gets translated and interpreted into a total of 6 programs taht do that same thing (but in different languages)
+- The same program we write at level 5, gets translated and interpreted into a total of 6 programs that do that same thing (but in different languages)
 
 
 - Compiling is a very slow process
@@ -48,28 +53,34 @@ Level 6
 - even slower than level 5
 - ex english
 Level 5
+- c programs
 - mySQL_remote_conntect()
 - fewer of them and less code
 - less instructions
 - smaller program
 - most powerful
+- easier for humans
+- harder for computers
 Level 4
 Level 3
 Level 2
 Level 1
 Level 0
-- only program that actually runs
+- usually like a .exe (executable)
+- only program that actually runs  **
 - programm gets bigger
 - the most instruction needed
 - least powerful
 - this level is better
+- harder for humans
+- easier for computers
 
 
 ---
 I'm speaking to someone who speaks:
 
 French 
-Fr-Gr
+Fr-Gr (translators/interpretors/converters)
 German 
 Gr-Ic
 Icelandic 
@@ -85,11 +96,11 @@ English
 - if we change icelandic to Finnish what else must changes?
 - the two translators must change
 
-Quiz questions
+## Quiz questions
 if we change an operating system what else needs to change?
 - the translation assembler and partial interpreation
 - this means it has VERY GOOD MODULARITY
-- benefit of having many levels is that we have good modulatirityy and its easy for us, the computer and its cheap. We only need to replace one of the levels
+- benefit of having many levels is that we have good `modulatirity` and its easy for us, the computer and its `cheap` hardware/programmers. We only need to replace one of the levels
 
 CHEAP
 - cheap hardware
@@ -102,16 +113,27 @@ if its only one level?
 
 ---
 
-Translation AKA Compliation
-Interpretation
+`Translation AKA Compliation `
+- Compilers do the conversion from the higher level language to the lower level language
+- converting an entire high level language (HLL) program to an equivalent lower level language  program all at once. Then you no longer need the high level language program. Ex once you have the game you dont need the course code anymore because you got the .exe
+- compliation is really slow. Once it is complied though it is fast.
+
+`Interpretation`
+- interpreting it as I go word by word
+- cant get rid of your program
+- converts a higher level language program into the equivalent lower level language program, one instruction at a time (convert one instruction, run it, repeat with the next instruction)
+- can run it sooner but not the whole thing.
 
 --
-
-- As you keep adding more levels it will make things more slower/less speed. It will make it more modular.
-
+## Problem with modularity
+- As you keep adding more levels it will make things more slower/less speed. It will make it more modular as you add more levels.
 - the more instructions that are below the more powerful the level above 
 
 ---
+
+Video 1:50:00 explanation
+Lesson 1
+--
 
 Page 52 in textbook
 4. consider a multilevle computer in which all the levels are different. Each level has instructions that are m times as powerful as those  for the level below it; that is, one level r k seconds to run, how long would equivalent programs take at levels 2,3 and 4 assuming n level r instructions are required to interpret a single r + 1 instruction?
@@ -129,16 +151,19 @@ n the number of interpreter instructions required to transform each Highlevel la
 Let m = 3
 Let n = 4
 
-the larger m is then then it gets smaller at the top
-A larger value of m is good because the program will be faster because there are fewer instructions to be converted (interpreted)
+n > m which means n must be greater than m
+- it took 4 interpretations - required to transform from higher to lower level 
+
+- the larger m is then then it gets smaller at the top
+- A larger value of m is good because the program will be faster because `there are fewer instructions to be CONVERTED (interpreted)`
 - if i had stronger people when moving i would need fewer people and it will go faster. It would be better to buy lunch for the 5 strong people then 30 CST students.
 
 
 Level 4                       m
-                        //// |||| \\\\
-Leve 3                   m    m      m
-                //// |||| \\\\
-Level 2           m    m  m     mmm mmm
+                    ////    ||||    \\\\
+Leve 3               m        m       m
+            //// |||| \\\\
+Level 2      m     m    m   mmm mmm
 
 Leve 1    mmm mmm mmm mmm mmm mmm mmm mmm mmm
 
@@ -149,7 +174,7 @@ if `n` is bigger and bigger what happens to the overall time and why?
 The time goes up because 
 the number of required conversions is higher
 
-Answer:
+`Answer`:
 level 4
 k (n/m)^3
 level 3:
@@ -161,5 +186,5 @@ level 1
 - takes k seconds
 
 
-
+* The bigger m is the smaller the time is.
 * the bigger n is the bigger the time is.
