@@ -7,7 +7,7 @@ John Von Neumann
 `Bit`: binary digit 0 or 1
 `byte`: 8-bit word
 `Word`: size: 64 bits probably; the size depends on the size of a register
-`Register`: fast cpu memory; by definition it stores a single word (an instruction, ad address, an operand)
+`Register`: fast cpu memory; by definition it stores a single word (an instruction, an address, an operand)
 - 32 bit vs 64 bit: 2^64 = 2^32 * 2^32
 `cpu`: central processing unit; FDE (Fetch-decode-execute) cycle - fetches, decodes, and executes instructions
 `RAM`: Random access memory; main memory; 
@@ -115,7 +115,7 @@ if its only one level?
 
 `Translation AKA Compliation `
 - Compilers do the conversion from the higher level language to the lower level language
-- converting an entire high level language (HLL) program to an equivalent lower level language  program all at once. Then you no longer need the high level language program. Ex once you have the game you dont need the course code anymore because you got the .exe
+- converting an entire high level language (HLL) program to an equivalent lower level language  program all at once. Then you no longer need the high level language program. Ex once you have the game you dont need the sourse code anymore because you got the .exe
 - compliation is really slow. Once it is complied though it is fast.
 
 `Interpretation`
@@ -129,6 +129,18 @@ if its only one level?
 - As you keep adding more levels it will make things more slower/less speed. It will make it more modular as you add more levels.
 - the more instructions that are below the more powerful the level above 
 
+## Which is more powerful
+
+`Lower-level languages` can be considered more powerful in scenarios where you need maximum control over hardware, performance, and efficiency. They give you the ability to write highly optimized, fine-tuned code for specialized hardware.
+
+`Higher-level languages` are generally more powerful in terms of developer productivity, portability, and ease of use. While they may not give you as much control over hardware, they let you solve problems faster and more abstractly, which is often more valuable for many modern applications.
+
+It depends on what you mean by "power":
+
+`Hardware/Computational Control:` The digital logic level (Level 0) is more "powerful" because it gives you complete control over computation and is the foundation for all computing. Every program you write in a high-level language eventually compiles down to machine instructions that run on this level.
+
+`Ease of Problem Solving and Productivity`: The higher-level languages (Level 5) are more "powerful" in the sense that they allow you to rapidly create complex applications and solve problems without needing to manage the intricacies of hardware or machine code.
+
 ---
 
 Video 1:50:00 explanation
@@ -136,7 +148,7 @@ Lesson 1
 --
 
 Page 52 in textbook
-4. consider a multilevle computer in which all the levels are different. Each level has instructions that are m times as powerful as those  for the level below it; that is, one level r k seconds to run, how long would equivalent programs take at levels 2,3 and 4 assuming n level r instructions are required to interpret a single r + 1 instruction?
+4. consider a multilevel computer in which all the levels are different. Each level has instructions that are m times as powerful as those  for the level below it; that is, one level r k seconds to run, how long would equivalent programs take at levels 2,3 and 4 assuming n level r instructions are required to interpret a single r + 1 instruction?
 
 Clearly define the variables: r, k, m, n
 
