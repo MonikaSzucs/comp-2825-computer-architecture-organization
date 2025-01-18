@@ -141,6 +141,10 @@ It depends on what you mean by "power":
 
 `Ease of Problem Solving and Productivity`: The higher-level languages (Level 5) are more "powerful" in the sense that they allow you to rapidly create complex applications and solve problems without needing to manage the intricacies of hardware or machine code.
 
+The other technique is to write a program in L0 that takes programs in L1 as
+input data and carries them out by examining each instruction in turn and executing
+the equivalent sequence of L0 instructions directly. This technique does not require first generating a new program in L0. It is called `interpretation` and the program that carries it out is called an `interpreter`
+
 ---
 
 Video 1:50:00 explanation
