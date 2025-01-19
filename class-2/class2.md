@@ -23,14 +23,14 @@ What has a clock?
 - Graphics cards GPUs
 - BUS
 
-With paralellism we want to finish them as much as possible that is our bandwidth
+With paralellism we want to finish them as much as possible that is our `bandwidth`
 
 ## von Neumann Datapath 
 (inside the CPU) `page 57`
 
-`Program counter` (PC) - holds the main memory (RAM) address of the next instruction to be FDE (Fetch-decode-execute) it knwos the next instruction and where
+`Program counter` (PC) - holds the main memory (RAM) address of the next instruction to be FDE (Fetch-decode-execute) it knows the next instruction and where
 
-How many registers do you have in your computer approx? 16 floating point registers - you dont need tha tmany you only need to make sure it has teh proper data in it that is all. Its just like you live 100 years you dont need to store 100 years of food you only eat a little at a time just like a register it takes in a little at a time.
+How many registers do you have in your computer approx? 16 floating point registers - you dont need that many you only need to make sure it has the proper data in it that is all. Its just like you live 100 years you dont need to store 100 years of food you only eat a little at a time just like a register it takes in a little at a time.
 
 - Program counter is what pulls it into the register file
 
@@ -57,7 +57,7 @@ Eventually everything goes back to main memory then goes back to hard drive
 1. all instructions should be directly executed by hardware (hardware is faster than software - the more hardware the more expensive):   complex and expensive
 2. issue instructions as fast/often as possible  complex and expensive and physics limits (how fast 1ns for copper wire etc you need to think of the type of wire and length an heat or wires too close together)
 3. instructions should be easy to decode(takes time):   backwards compatibility, same sized instructions (can be complicated it takes time to decode)
-4. Only LOAD and STORE instructions should reference main memory (ex you enver know what food or extra things you need to buy fro food in a month)(you cannot ever get 100% hit rate):   cannot avoid going to Main Mememory (MM) (RAM)
+4. Only LOAD and STORE instructions should reference main memory (ex you enver know what food or extra things you need to buy for food in a month)(you cannot ever get 100% hit rate):   cannot avoid going to Main Mememory (MM) (RAM)
 5. provide lots of registers (if you hate going to the store you can buy a bigger fridge but there is a limit - there will be a waste some will go bad - we can only guess in a small amount of time what words we need in the future - if we put the wrong words it will go stale if we add too many words)    Expensive
 
 GOAL: Prevent the CPU from starving
@@ -68,7 +68,7 @@ GOAL: Prevent the CPU from starving
 ### RISC vc CISC
 `Reduced instruction set computer` (RISC):   fewer, and simpler instructions ex: 3+3+3+3+3=15 - takes for cycles is fast
 
-- we want the msot common isntructions and put thm in hardware because its faster. its always faster than software.
+- we want the most common instructions and put them in hardware because its faster. its always faster than software.
 - software is slower it will require conversion to hardware
 
 `Complex instruction set computer` (CISC):   more, and more complex instructions: ex implement the most common instructions directly in hardware (no interpretation required), even the complex ones ex: 3*5=15  - few step but bigger step
@@ -80,7 +80,7 @@ OUR computer is a mix: mostly RISC with some CISC
 https://cs.standford.edu/people/eroberts/courses/soco/projects/risc/risccisc
 
 
-The CISC approach attempts to minimize the number of isntructions per program, sacrificing the number of cycles per instruction. RISC does the opposite, reducing the cycles per instruction at the cost of the number of instructions per program.
+The CISC approach attempts to minimize the number of instructions per program, sacrificing the number of cycles per instruction. RISC does the opposite, reducing the cycles per instruction at the cost of the number of instructions per program.
 
 
 ** IMPORTANT **
@@ -95,7 +95,7 @@ drawings:
 1. The cpu wants one single word. It issues a request to Main Memory for that word
 2. The cache is checked first
 - if the cache has that word, then it's requesteed to the cpu
-- if the cache does not have that word, then that word PLUS ITS NEIGHBORS are detched from Main Memory and the request word is forwarded to the CPU
+- if the cache does not have that word, then that word PLUS ITS NEIGHBORS are detched??? from Main Memory and the request word is forwarded to the CPU
 
 Programs tend to run in order. If the CPU is requesting word 6000 right now, words near 6000 are likely to be requested next/soon
 
@@ -121,24 +121,27 @@ this is what you might here in the next minute or two not what they might talk a
 - we can make use of this the cache controller will bring in blocks of memory containing words located physically near a recently requested word. Ths isi why it grabs a block. 
 - Then later we walk by those people they might talk about computer architecture but now we will hear other words for a little while.
 
-The msot likely word they will say about TG is tiger words - `temporal locality` saying the same word as the topic
+The msot likely word they will say about TW is tiger woods - `temporal locality` saying the same word as the topic
 
 - ex we might use the same data over and over which calls it many times
-- then we might keep it int he register so we dont get it replaced in the near future.
+- then we might keep it in the register so we dont get it replaced in the near future.
 
-- In computer programming, progams tend to run in linear order. If the CPU, for example, requested word 6000, it is likely that soon words around 6000 will be requested. This is called the `principal of spatcial locality`. Because of the principle of spatial locality, negihtboring words are fetched into the cache whenever memory words are, because cache serves words faster to the CPU. Analogy: If you hear people talking about Tiger Woods, you can guess words they will probably say inteh near future (2 minutes?): golf, cheater, titles, sports, nike. Another anaology: If you see someone at the store with taco shells int heir basket, you can guess other items that will be in there too: beef, cilantro, cheese, sour cream.
+- In computer programming, progams tend to run in linear order. If the CPU, for example, requested word 6000, it is likely that soon words around 6000 will be requested. This is called the `principal of spatcial locality`. Because of the principle of spatial locality, negihboring words are fetched into the cache whenever memory words are, because cache serves words faster to the CPU. Analogy: If you hear people talking about Tiger Woods, you can guess words they will probably say inteh near future (2 minutes?): golf, cheater, titles, sports, nike. Another anaology: If you see someone at the store with taco shells in their basket, you can guess other items that will be in there too: beef, cilantro, cheese, sour cream.
 
-There is also a `principle of temporal locality`, which means the same word being requested now, will likely be re-requested again soon. Because of the principle of temporal locality, the cache tries to keep recent words there (don't let them get evicted). Analogy: you hear someone in teh hallway talkinga bout Tiger Woods. You can guess some words they'll say (probably) in the near future: Tiger Woods.
+There is also a `principle of temporal locality`, which means the same word being requested now, will likely be re-requested again soon. Because of the principle of temporal locality, the cache tries to keep recent words there (don't let them get evicted). Analogy: you hear someone in the hallway talking about Tiger Woods. You can guess some words they'll say (probably) in the near future: Tiger Woods.
 
 - CPU doesn't know the main memory exists.
 
-- with no cache to boot up windows it will take how much longer? It took about 2 hours. It didn't ahv ea problem doing it as long as you are patient. You dont need cache but then you will need a lot of patience.
+## Question
+?? BUT didn't we show in the other diagram of the CPU that the output register can lead to RAM? ?
 
-`translation` takes the whoel thing at once then runs it then you dont need the other program.
+- with no cache to boot up windows it will take how much longer? It took about 2 hours. It didn't havea problem doing it as long as you are patient. You dont need cache but then you will need a lot of patience.
+
+`translation` takes the whole thing at once then runs it then you dont need the other program.
 
 DEFINITION: `Interpreter`
 
-Any software program (aka virutal machine) that FDE (fetch, decodes, and executes) the instructions of another program. The output of this is another program that is simpler to run. But, this process takes time. this i cheaper than having hardware run the original (more complex, higher-level) program and it is cheaper than having hardware do the conversion (interpretation)
+Any software program (aka virutal machine) that FDE (fetch, decodes, and executes) the instructions of another program. The output of this is another program that is simpler to run. But, this process takes time. this is cheaper than having hardware run the original (more complex, higher-level) program and it is cheaper than having hardware do the conversion (interpretation)
 
 
 ## Pipelines
@@ -152,8 +155,49 @@ assemply line to build cars = pipelien to FDE instruction
 goal: fast, cheap, simple process to maximize bandwidth
 multiple stages (lots of hardware), `working in parallel and in series`
 
-time: 84:00
+- a car is an instruction for example
 
+## Terms
+`instructional latency` - the total time an instruction (car) spends in the pipeline (assembly line), from start to finish. Ex 66 min/car
+
+`Instructional bandwidth` - the number of instructions finishing per unit time: ex 1 car/ 60 min   (1 divided by the slowest stage time)
+
+`Von neuman bottle neck` - when the person/robot is busyand has to wait until it can move along the pipeline/assembly line.
+
+`super scalar architecture` - extra hardware at the slowest stages
+
+- there is no direct relationship between latency and bandwidth
+- a longer/deeper pipeline can increase bandwidth and may lengthen, shorten, or not affect the latency
+
+- sometimes it doesn't matter when latency is high but we will see soon why.
+
+## Netflix
+original latency: several days
+
+### What would low bandwidth look like for Netflix?
+- buffering
+- low resolution
+- stuttering
+
+## Playland vs disneyland
+Playland
+- latency: time on the ride
+- bandwidth: # people exiting the ride / time
+... of a rollercoaster - they have lots of boats where people enter and exit constantly it just requires money
+
+Disneyland
+
+
+## Question
+What are the latency and bandwidth of this assembly line:
+Stages take 15 min, 4 min, 1 min, 24 min, 16 min, and 120 seconds
+
+1. we need to first change seconds to minutes
+
+latency: sum of all times of all stages: 15+4+1+24+16+2=62mins/unit
+bandwidth: 1 unit / slowest stage = 1unit/24 minutes
+
+for next weeks quiz practice with a combination of stages with times in ms, us, ns, ps
 
 
 
