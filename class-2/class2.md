@@ -6,14 +6,14 @@
                 100 * 10^6
                 - Period = 1/frequency; 1/1M = 1 microsecond = 10^-6
                 when we talk about clock sits power of 10
-                1GHz = 1000000000 cycles/second; corresponds to 1/1000000000th second/cycle (1ns)
+                1GHz = 1,000,000,000 cycles/second; corresponds to 1/100,000,000th second/cycle (1ns)
 
 1GHz cpu    - 1 billion rising and falling edges per second
             - 1 rising edge per nanosecond
             - POSSIBLE we could `start` one instruction each nanosecond
 
 The clock cycle of cable TV shows is 30 minutes: that means tv shows could begin every half hour. It does not mean that TV shows are finished in 30 minutes
-The clock cycle time of movies in multi-creen theatres (i.e. parallel) is 5 minutes, which means we can trugger a "movie starting" every five minutes... it does NOT mean the movies are 5 minutes long.
+The clock cycle time of movies in multi-creen theatres (i.e. parallel) is 5 minutes, which means we can trigger a "movie starting" every five minutes... it does NOT mean the movies are 5 minutes long.
  ___    ___    ___
 /   \__/   \__/   \
 
@@ -32,7 +32,7 @@ With paralellism we want to finish them as much as possible that is our `bandwid
 
 How many registers do you have in your computer approx? 16 floating point registers - you dont need that many you only need to make sure it has the proper data in it that is all. Its just like you live 100 years you dont need to store 100 years of food you only eat a little at a time just like a register it takes in a little at a time.
 
-- Program counter is what pulls it into the register file
+- `Program counter` is what pulls it into the register file
 
 FETCH
 It will grab (FETCH) what it needs in the main memory then bring it into the register through the bus. 
@@ -46,7 +46,7 @@ ALU
 - it will then add the register 3+4 and will put the total number back into the output register which now will be 7 
 
 Output register
-- you can choose to either shell it out in teh register for future use or shell it out to RAM for later
+- you can choose to either shell it out in the register for future use or shell it out to RAM for later
 
 Eventually everything goes back to main memory then goes back to hard drive
 
@@ -54,10 +54,10 @@ Eventually everything goes back to main memory then goes back to hard drive
 
 ## Wishlist of how to speed up instructions
 - page 63 - 65
-1. all instructions should be directly executed by hardware (hardware is faster than software - the more hardware the more expensive):   complex and expensive
+1. all instructions should be directly executed by hardware (hardware is faster than software - the more hardware the more expensive):   complex and expensivne
 2. issue instructions as fast/often as possible  complex and expensive and physics limits (how fast 1ns for copper wire etc you need to think of the type of wire and length an heat or wires too close together)
 3. instructions should be easy to decode(takes time):   backwards compatibility, same sized instructions (can be complicated it takes time to decode)
-4. Only LOAD and STORE instructions should reference main memory (ex you enver know what food or extra things you need to buy for food in a month)(you cannot ever get 100% hit rate):   cannot avoid going to Main Mememory (MM) (RAM)
+4. Only LOAD and STORE instructions should reference main memory (ex you ever know what food or extra things you need to buy for food in a month - words go stale just like bread)(you cannot ever get 100% hit rate):   cannot avoid going to Main Mememory (MM) (RAM)
 5. provide lots of registers (if you hate going to the store you can buy a bigger fridge but there is a limit - there will be a waste some will go bad - we can only guess in a small amount of time what words we need in the future - if we put the wrong words it will go stale if we add too many words)    Expensive
 
 GOAL: Prevent the CPU from starving
@@ -92,16 +92,23 @@ look at drawing bottom of page
 2. Temporal
 
 drawings:
-1. The cpu wants one single word. It issues a request to Main Memory for that word
+1. The cpu wants one single word at a time. It issues a request to Main Memory for that word
 2. The cache is checked first
-- if the cache has that word, then it's requesteed to the cpu
-- if the cache does not have that word, then that word PLUS ITS NEIGHBORS are detched??? from Main Memory and the request word is forwarded to the CPU
+- if the cache has that one word at a time, then it's requested from main memory. It doesn't even know cache exists
+- CPU knows the program counter for the next instruction it wants
+- the closer you are to the CPU the more expensive it is, the faster it is, the smaller it is
 
 Programs tend to run in order. If the CPU is requesting word 6000 right now, words near 6000 are likely to be requested next/soon
 
 therefore bring to the cache, which has faster access times then Main Memory.
 
+- CPU is intercepted by the cache. The cache will ask if it has 6000 but CPU doesn't know CACHE exists. CPUS asks for 6000 but cache will check and if it does have it will give it him. If the CPU asks for 6000 every tiem teh cache will be checked first and if it is not there then cache will fatch a block of words around 6000 then forward that one request to the CPU. It will only forward 6000 but it is grabbing a group of the numbers because it might need something related to it.
+- Then i might ask for 6001 and cache will say I have it
+- but once it asks for 6006 it will check itself if it idoesn't have it then it will grab it and with some wrods around in to get more `hits` for later. Programs tend to run in `linear order`
+
 The program of the CPU and everything - everything goes in order
+
+- the code only does not go in order if its in a loop, if statement, method or function call 
 
 `principal spacial locality` - grab what you can in order
 
@@ -118,10 +125,10 @@ Ex you hear someone talk about Tiger woods. You might then bet money on what you
 - phil
 this is what you might here in the next minute or two not what they might talk about 1 hour from now. This is a `high hit rate.`
 - we can peed up our computer with principal spatial locality
-- we can make use of this the cache controller will bring in blocks of memory containing words located physically near a recently requested word. Ths isi why it grabs a block. 
+- we can make use of this the cache controller will bring in blocks of memory containing words located physically near a recently requested word. This is why it grabs a block. 
 - Then later we walk by those people they might talk about computer architecture but now we will hear other words for a little while.
 
-The msot likely word they will say about TW is tiger woods - `temporal locality` saying the same word as the topic
+The most likely word they will say about TW is tiger woods - `temporal locality` saying the same word as the topic
 
 - ex we might use the same data over and over which calls it many times
 - then we might keep it in the register so we dont get it replaced in the near future.
@@ -130,10 +137,7 @@ The msot likely word they will say about TW is tiger woods - `temporal locality`
 
 There is also a `principle of temporal locality`, which means the same word being requested now, will likely be re-requested again soon. Because of the principle of temporal locality, the cache tries to keep recent words there (don't let them get evicted). Analogy: you hear someone in the hallway talking about Tiger Woods. You can guess some words they'll say (probably) in the near future: Tiger Woods.
 
-- CPU doesn't know the main memory exists.
-
-## Question
-?? BUT didn't we show in the other diagram of the CPU that the output register can lead to RAM? ?
+- CPU doesn't know the cache exists.
 
 - with no cache to boot up windows it will take how much longer? It took about 2 hours. It didn't havea problem doing it as long as you are patient. You dont need cache but then you will need a lot of patience.
 
@@ -146,11 +150,15 @@ Any software program (aka virutal machine) that FDE (fetch, decodes, and execute
 
 ## Pipelines
 Refer to page 66 of the textbook
+
+Henry ford - assembly line
+
 Analogy: Acomputer pipeline is a set of multiple hardware devices in that FDE instruction in parallel and in serie, in order ot maximize instructional bandwidth.
 - its like an assembly line. How long does it take ot make a honda? 12 hours. How long doe sit take to make a Bugatti? 6 months
 - why is there a big difference? they don't use an assembly line 
 
 A car assembly line is a set of multiple hardware devices that build cars in paralel and in series, in order ot maximize car-creation bandwidth. Assembly, lines can build cars in a way that is `simpler cheaper and faster`
+
 assemply line to build cars = pipelien to FDE instruction
 goal: fast, cheap, simple process to maximize bandwidth
 multiple stages (lots of hardware), `working in parallel and in series`
@@ -162,14 +170,19 @@ multiple stages (lots of hardware), `working in parallel and in series`
 
 `Instructional bandwidth` - the number of instructions finishing per unit time: ex 1 car/ 60 min   (1 divided by the slowest stage time)
 
-`Von neuman bottle neck` - when the person/robot is busyand has to wait until it can move along the pipeline/assembly line.
+`Von neuman bottle neck` - when the person/robot is busy and has to wait until it can move along the pipeline/assembly line.
 
-`super scalar architecture` - extra hardware at the slowest stages
+`super scalar architecture` - extra hardware at the slowest stages - requires more money for more things to happen in parallel
 
 - there is no direct relationship between latency and bandwidth
 - a longer/deeper pipeline can increase bandwidth and may lengthen, shorten, or not affect the latency
 
 - sometimes it doesn't matter when latency is high but we will see soon why.
+
+Ideal pipeline:
+- no bottle necks
+- no slowest stage
+- superscalar architecture: extra hardware at the slowest stage
 
 ## Netflix
 original latency: several days
