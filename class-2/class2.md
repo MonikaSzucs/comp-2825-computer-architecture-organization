@@ -185,6 +185,7 @@ Ideal pipeline:
 - superscalar architecture: extra hardware at the slowest stage
 
 ## Netflix
+When netflix first opening then you say you want to watch it but when you actual do that? it may take days before. But they got the latency way down.
 original latency: several days
 
 ### What would low bandwidth look like for Netflix?
@@ -194,19 +195,23 @@ original latency: several days
 
 ## Playland vs disneyland
 Playland
-- latency: time on the ride
+- latency: time on the ride (you dont want a super long or super short ride)
 - bandwidth: # people exiting the ride / time
 ... of a rollercoaster - they have lots of boats where people enter and exit constantly it just requires money
 
 Disneyland
+- ex like a small world peopel wait in line for long time you get a long time on the ride. They cut down teh wait time by adding more money to create more seats with no gaps so every 10 seconds someone comes on and off the ride.
 
+## What are the latency and bandwidth of a pipeline whos stages at 20ns, 15ns, 40ns, 5ns?
+Latency:    20+15+40+5 = 80ns/instruction
+bandwidth:  1 instruction / 40 ns   (1/slowest stage)
 
 ## Question
 What are the latency and bandwidth of this assembly line:
 Stages take 15 min, 4 min, 1 min, 24 min, 16 min, and 120 seconds
 
 1. we need to first change seconds to minutes
-
+120 seconds = 2min
 latency: sum of all times of all stages: 15+4+1+24+16+2=62mins/unit
 bandwidth: 1 unit / slowest stage = 1unit/24 minutes
 
