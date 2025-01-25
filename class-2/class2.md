@@ -111,7 +111,7 @@ The program of the CPU and everything - everything goes in order
 - the code only does not go in order if its in a loop, if statement, method or function call 
 
 `principal spacial locality` - grab what you can in order. What you are using now is tended to be used again very soon.
-- issues one request per address
+- issues one request per address because it only stores one word in a register. Then it sends out a request only to main memory and it doesn't know about the cache.
 
 CPU
 - sends out request only to main memory it doesn't know about cache
@@ -186,9 +186,11 @@ multiple stages (lots of hardware), `working in parallel and in series`
 `super scalar architecture` - extra hardware at the slowest stages - requires more money for more things to happen in parallel
 
 - there is no direct relationship between latency and bandwidth
-- a longer/deeper pipeline can increase bandwidth and may lengthen, shorten, or not affect the latency
+- a longer/deeper/lengthen pipeline can increase bandwidth and may lengthen, shorten, or not affect the latency
 
 - sometimes it doesn't matter when latency is high but we will see soon why.
+
+- no direct relationship between latency and bandwidth
 
 Ideal pipeline:
 - no bottle necks

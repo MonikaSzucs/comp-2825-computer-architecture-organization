@@ -56,12 +56,12 @@ received:
 00001111
 - it can either be all 0 or all 1
 - we did not agree on this so the error detection 
-- that's a detectable but uncorrectable error
+- that's a `detectable but uncorrectable error`
 
 you sent 00000000
 i receieved 11111111
 - we would't do anything because we think thats what they wanted
-- undetectable error therefore uncorrectable
+- `undetectable error therefore uncorrectable`
 
 received:
 00000011
@@ -73,40 +73,40 @@ received:
 received:
 00000011
 - what if this was supposed to be all 1's?
-- then again we have a detectable but uncorrectable error. We don't know we are wrong.
+- then again we have a detectable error but uncorrectable error. We don't know we are wrong.
 to be clear: we would "change it" to 00000000 and not know we were wrong.
 
 ## how can we make this code better?
 Code X
 0000 0000 0000 0000
-- lets choose a 16 bit word instead of 8
+- lets choose a 16 bit word instead of 8 bit word
 
 Why is this new code better than code A?
 - more clairity
 - we can fix a 4 bit error now with code x
 
 0000 0000 0000 1111
-- we can fix a 4bit error no problem now comepared to before
+- we can fix a 4 bit error no problem now comepared to before
 - we can fix up to a 7 bit error
 
-- if its 8 bit error then its in the middle so its uncorrectable
+- if its 8 bit error then its in the middle so its detectable but uncorrectable
 
 ## On a quiz say
 with code x a 9 bit error is not correctable because we will assume we are in the wrong direction so we will get close to the wrong word and we will try to make it better so we will aim for another bit
 
 
 - anyway more than half way wrong we will assume is the other target and it is a wrong assumption. 
-- we can only fix a hamming less than 50%
+- we can only fix a  less than 50% of hamming distance of errors
 
 - code X hamming distance is 16 bits
-- we can fix 1 -7 bit errors
+- we can fix 1-7 bit errors
 - an 8 it error is unfixable looks exactly half like each of 2 words
 - 9 to 15 bit erros make the word more closely look like a WRONG word: unfixable too
 
 - a 16 bit error is not even detectable 
 Ex. send 1111 1111 1111 1111
 receieve 0000 0000 0000 0000
-so 16 bit errors are neither detectable nor correctable
+so 16 bit errors are `neither detectable nor correctable`
 
 7 bit error: 
 sent:       0000 0000 0000 0000
@@ -120,17 +120,16 @@ looks like more 0's so it is probably all 0's and that is correct
 - lots of hardware
 - after a while its too much
 
-## 
 Code A
 00000000
 11111111
 - anything that is half and half is a good third word 11110000
 
-00000001 this is a bad third word because it is too close and difficult to detect errors. Now we cant fix a 1 bit error - 1 bit hamming distance 
+00000001 this is a bad third word because it is too close and difficult to detect errors. Now we cant fix a 1 bit error with a 1 bit hamming distance 
 - if one bit goes off then its a undetectable error which is really bad.
 
-Do we want a large or small hamming dsitance? Why?
-- we want a large hamming sitance for clairty because we can correct larger errors.
+## Do we want a large or small hamming distance? Why?
+- we want a large hamming distance for clairty because we can correct larger errors.
 - more things can go wrong and you can detect them
 
 0000 0000
@@ -145,7 +144,7 @@ Do we want a large or small hamming dsitance? Why?
 0000 0001
 - hamming distance of 1 bit that is bad
 
-- not 8 because it is a avlid word but not the one intended
+- not 8 because it is a valid word but not the one intended
 - any more than half it looks like the wrong word
 Hamming distance        # of detectable errors      # of correctable errors
 8                       7                           3
@@ -168,17 +167,14 @@ aka check bits
 
 we must actually store the (longer) codeword in order to save and retrieve the orginal datawords with the ability to detect and correct errors
 
-### Example
-dataword: 01101
-question: create the even-pairty hamming codeword for this dataword. Clearly identify the parity bits. Show your work. 
-
-_ _ _ _ _
-1 2   4
+### Example see sheet
 
 ## What if we said odd parity
-010011011
+01 0 0 110 1 1
 Answer: 100111001 just flip the parity bits (leave databits alone)
 
+## Next weeks quiz
+- you wil have to draw it, show your work and upload a picture of it
 
 ## The following Hamming codewords was made using even parity:
 a. are there errors? Yes
