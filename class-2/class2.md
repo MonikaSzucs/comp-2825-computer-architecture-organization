@@ -110,7 +110,18 @@ The program of the CPU and everything - everything goes in order
 
 - the code only does not go in order if its in a loop, if statement, method or function call 
 
-`principal spacial locality` - grab what you can in order
+`principal spacial locality` - grab what you can in order. What you are using now is tended to be used again very soon.
+- issues one request per address
+
+CPU
+- sends out request only to main memory it doesn't know about cache
+- CPU issues the request 
+- cache will check itself first. If it does then give it to the CPU over a data BUS. 
+- if cache doesn't contain the word then it will grab a fix sized box with a bunch of numbers then computer programs tend to run in order.
+- requesting instructios from memory. These are addresses of instructions. 
+- if you bring in 5500 to 6500 then the next one it will want is probably in that block you have already grabbed
+
+
 
 Cache grabs words around (fixed sized box)
 
@@ -183,6 +194,11 @@ Ideal pipeline:
 - no bottle necks
 - no slowest stage
 - superscalar architecture: extra hardware at the slowest stage
+
+- you can also lengthen the pipeline
+The new pipeline maybe now has 15 stages that takes 30 seconds - deepending pipeline
+`instructional latency`: 7.5min/car
+`Instructional bandwidth`: 2car/min
 
 ## Netflix
 When netflix first opening then you say you want to watch it but when you actual do that? it may take days before. But they got the latency way down.
