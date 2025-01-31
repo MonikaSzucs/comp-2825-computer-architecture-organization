@@ -1,5 +1,8 @@
 # Class 3
 
+## On a quiz say
+with code x a 9 bit error is not correctable because we will assume we are in the wrong direction so we will get close to the wrong word and we will try to make it better so we will aim for another bit
+
 ## Error detection adn error correcting codes
 - ex error correcting code (ECC) ram
 
@@ -50,7 +53,7 @@ Code A
 HD = 8bits
 
 received: 00000001
-- we got s single bit of error but it is probably supposed to have been 00000000
+- we got a single bit of error but it is probably supposed to have been 00000000
 
 received:
 00001111
@@ -73,7 +76,7 @@ received:
 received:
 00000011
 - what if this was supposed to be all 1's?
-- then again we have a detectable error but uncorrectable error. We don't know we are wrong.
+- then again we have a `detectable error but uncorrectable error.` We don't know we are wrong.
 to be clear: we would "change it" to 00000000 and not know we were wrong.
 
 ## how can we make this code better?
@@ -123,6 +126,8 @@ looks like more 0's so it is probably all 0's and that is correct
 Code A
 00000000
 11111111
+
+## Third word 
 - anything that is half and half is a good third word 11110000
 
 00000001 this is a bad third word because it is too close and difficult to detect errors. Now we cant fix a 1 bit error with a 1 bit hamming distance 
@@ -161,7 +166,7 @@ Hamming Code
 dataword: the raw to store
 codeword: the dataword plus extra bits
 
-Extra bits are called `pairty bits`
+Extra bits are called `pairity bits`
 aka redundant bits
 aka check bits
 
@@ -194,4 +199,6 @@ c. What was the original dataword supposed to have been?
 
 011000011011
 
-a) 
+## Extra notes
+`Dataword`:	The raw data we want to store or send Ex 10011
+`Codeword`:	The dataword plus extra bits. The extra bits are called parity bits and they are what allow us to detect / correct errors
