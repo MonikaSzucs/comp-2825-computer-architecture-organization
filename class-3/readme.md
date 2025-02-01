@@ -3,7 +3,7 @@
 ## On a quiz say
 with code x a 9 bit error is not correctable because we will assume we are in the wrong direction so we will get close to the wrong word and we will try to make it better so we will aim for another bit
 
-## Error detection adn error correcting codes
+## Error detection and error correcting codes
 - ex error correcting code (ECC) ram
 
 - when we save word in ram, How do we know it is correct? There could be errors in that process.
