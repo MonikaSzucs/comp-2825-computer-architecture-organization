@@ -7,8 +7,8 @@
  011111001
 
  ## Notes
-`Mean (Average) Memory Access Time`: The average tiem it takes the CPU to fetch a word from sort of memory (thefetch in the fetch-decode-execute cycle).
-1 min to grab from fedege and 1 hour from costco so the mean is the 1 min in fridge with the 1 hour from costco
+`Mean (Average) Memory Access Time`: The average time it takes the CPU to fetch a word from sort of memory (thefetch in the fetch-decode-execute cycle).
+1 min to grab from fridge and 1 hour from costco so the mean is the 1 min in fridge with the 1 hour from costco
 
 
 - we talked about grabbing info for the register from the future like for `principal spacial locality` and `temporal locality`
@@ -51,7 +51,8 @@ MAT = c + (1-h)m
 a)	What is the MAT if the hit rate is 100%?
 The MAT would be the same as the cache access time. But this is impossible. Cache gets loaded only on misses. Main memory must be accessed sooner or later.
 Computer never looks in main memory unless its a miss
-Its the same as teh cache access time (c)
+Its the same as the cache access time (c)
+
 b)	What is the MAT if the hit rate is 0%?
 This means nothing that the cpu wants is found in the cache. Time was wasted by looking in the cache. Cache can therefore actually SLOW down the cpu, by having nothing in it, or by having the “wrong words” in it. The MAT is the cache time PLUS main memory access time.
 Cache access plus memory access time (note: even worse than if we had NO cache at all!)
@@ -85,6 +86,8 @@ the rest hits in mm
 
 e)	What is the MAT if there are THREE levels of cache? Level 1 has an access time of 3ns. Level 2 has an access time of 12ns. Level 3 has an access time of 20ns. Main memory has an access time of 100ns. 300 requests by the cpu were made: 200 were hits in level 1. 60 were hits in level 2. 30 were hits in level 3. The rest were hits in main memory.
 
+300*3ns + 100*12ns + 40*20ns + 10*100ns = 3900ns/300 req = 13ns/req
+
 - Four levels? `Good quiz question.`
 
 ## Hard-Disk Drives
@@ -94,28 +97,41 @@ e)	What is the MAT if there are THREE levels of cache? Level 1 has an access tim
 https://www.youtube.com/watch?v=NtPc0jI21i0
 
 ## Notes
-The read/write head reads the magnetic bits in the secots
-`seek time`: the time fro the read/write head to get to the desired track 
+The read/write head reads the magnetic bits in the sectors
+`seek time`: the time for the read/write head to get to the desired track. The time for the mechanical moving of the arm (we do not have this in a SSD/RAM/Cache)
 `rotational latency`: how long it takes for the desired sector to spin to the read/write head (on average this takes half a rotation) - you might need to figure this out if it is missing in a problem
 
-rings are called tracks
+`rings` are called `tracks`
 - this is a one hard drive. It has three single-sided platters
+- they have magenetic bits met with a magnetic arm
+- there is a read/write head it goes to a certain track
+- disks are spinning in unison - spinning all the time
+- move the arm to the track then wait for the sector - waiting for the spin to bring the right sector to the read/write head
 
-- each platter has four tracks (the colored rings). A track is a ring of magetic bits some fixed distance from teh center: 
+- each platter has four tracks (the colored rings). A track is a ring of magetic bits some fixed distance from the center: 
 - red track
 - blue track
 - orange track
 - gray track
 
-- Each track consists of 8 sectors. A sector is a segments of a track with a header, data, a footer, and a gap between other sectors
+- Each track consists of 8 sectors. A `sector` is a segments of a track with a header, data, a footer, and a gap between other sectors
 
-`rev` = revoluation
+- once the read/write head comes to the platter it will look for the sector which is know as the seek time. Then the head on all tracks are all lined up perfectly. The mechanical moving of the head. Once you done the seek time and you found the first track, you wait for the sector you want to spin under the read/write head. On average it takes half a rotation for a arched read/write head to get its sector rotated underneath it. 
+
+- if there is a number missing like the teacher didn't provide it you might hve to find out the rotational latency
+
+`rev` = revolution
 `rpm` = revolutions per minute
 - Each cylinder has three tracks
-## Quiz question - 120 revolutation per min convert it to ms
-7200RPM: 120 RPM
+
+- cylinder is a set of same track on the different platters
+
+- while we move from red to blue track then its still spinning then when it gets there it still needs to spin around to read that track again to get to the right sector
+
+## Quiz question - 120 revolution per min convert it to ms
+7200RPM: 120 RPM  (7200/60)
 = 1/120th sec/rev = 8.3ms/rev  
-5400RMP: 11.1ms/rev
+5400RMP: 11.1ms/rev = 5400/60 = 90 -> 1/90 = 11.1ms/rev
 10800RPM: 5.55ms/rev
 
 - Read blued cylinder from sector 0 to sector 7 of A, then sector 0 to sector 7 of B, then sector 0 to sector 7 of C, then
@@ -155,8 +171,8 @@ worst case 20ms
 average case: (0 + 20)/2 = 10ms
 
 step 2
-- wait for sector 0 to spin under teh just-positioned read/write
-head: aerage case half a rotation = 5ms
+- wait for sector 0 to spin under the just-positioned read/write
+head: average case half a rotation = 5ms
 
 step 3: 
 - read all of that track on first platter: one full rotation: 10ms
@@ -167,18 +183,19 @@ step 4:
 - move the read/write head to the next cylinder (ie the adjacent track) 1ms
 
 Step 5
-- wait fro sector 0 to return to read/write head again: 9ms
+- wait for sector 0 to return to read/write head again: 9ms
 
 repeats steps 3-4-5 ten thousand times
 
+4 x 10 = 40ms
 10ms + 5ms + 10000(40ms + 1ms + 9ms) = 500,015ms = 500seconds
 
 ## Question #20-2
-How long does it take to read a disk with 4000 cylinders, each containing five tracks of 128 sectors? First, all the sectors of track 0 are to be read starting at sector 0, then all the sectors of track 1 starting at sector 0, and so on. The rotation rate is 7200 RPM, and a seek takes 2 msec between adjacent cylinders and 18 msec for the worst case. Switching between tracks of a cylinder can be done in 3ms.
+How long does it take to read a disk with 4000 cylinders, each containing five tracks of 128 sectors? First, all the sectors of track 0 are to be read starting at sector 0, then all the sectors of track 1 starting at sector 0, and so on. The rotation rate is 7200 RPM, and a seek takes `2 msec` between adjacent cylinders and 18 msec for the worst case. Switching between tracks of a cylinder can be done in 3ms.
 
 draw 4000 tracks on every platter
 128 pies/sections per platter
-7200 RPM -> 8.33ms/rev
+7200 RPM (7200/60) = 120s/rev -> (1/120 = 0.0083s/rev) 8.33ms/rev
 
 step 1
 - move the read/write 
@@ -186,7 +203,7 @@ step 1
 - worst case: 18ms
 
 step 2
-- wait fro sector 0 to spin
+- wait for sector 0 to spin
 - to the read/write head 4.16666ms (half of one 8.3333ms revolution)
 
 step 3:
@@ -198,10 +215,13 @@ step 4:
 - do step 3 five times
 
 step 5: 
-- seek adjacent cylinder: 2ms
+- seek adjacent cylinder: `2ms`
 
 repeat steps 3-4-5 four thousand times
 
+8.3 is from step 2
+3 is how long it takes to switch
+5.3 is waiting in sector
 18ms + 4.166666ms + 5(8.3+3+5.3)*4000 = 332 seconds
 
 ## Question #20-3
