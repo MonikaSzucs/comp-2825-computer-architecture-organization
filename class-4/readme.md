@@ -187,7 +187,7 @@ Step 5
 
 repeats steps 3-4-5 ten thousand times
 
-4 x 10 = 40ms
+4 x 10 = 40ms ??
 10ms + 5ms + 10000(40ms + 1ms + 9ms) = 500,015ms = 500seconds
 
 ## Question #20-2
@@ -236,7 +236,7 @@ step 2:
 - read that track on the first platter: 20ms
 
 step 3: 
-- switch track of that cylinder (ie go to smae track next platter): 1ms
+- switch track of that cylinder (ie go to same track next platter): 1ms
 
 do steps 2-3 six times to read each cylinder: 21ns * 6 = 126ms, 
 then seek adjacent cylinder (+2ms) = 128ms
