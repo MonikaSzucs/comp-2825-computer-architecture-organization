@@ -243,3 +243,44 @@ then seek adjacent cylinder (+2ms) = 128ms
 
 step 4: do the previous, 400 times: 400*128ms = 51200ms
 51.2 seconds plus step 1: 15ms = 51.215 seconds
+
+
+## Extra question
+
+How long does it take to read a disk with 6000 cylinders, each containing five tracks
+of 256 sectors? First, all the sectors of track 0 are to be read starting at any sector, then
+all the sectors of track 1 starting at any sector, and so on. The rotation rate is 3000RPM,
+and a seek takes 2 msec between adjacent cylinders and 30 msec for the worst case.
+Switching between tracks of a cylinder can be done instantaneously.
+
+-----
+-----
+-----
+-----
+-----
+
+
+draw 6000 tracks
+ 256 pies
+
+3000RPM (3000/60) = 50 -> 1/50 = 0.02 = 20ms/rev
+
+step 1
+- move the read/write 
+- head to the first track
+- worst case: 30ms
+average: 0 + 30 / 2 = 15ms
+
+step 2
+- wait for sector 0 to spin
+20ms * 5 platters = 100ms
+
+step 3:
+seek adjacent cylinder = 2ms
+
+do steps 2 and 3 6000 times
+(100+2)102 * 6000 = 612s
+
+> no step 4 because we can start reading at any sector
+
+## When will step 4 be required? if  a question says starting at sector 0
