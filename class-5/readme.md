@@ -93,6 +93,51 @@ This will periodically put out a 1 only when it is a 1 then writting can happen
 Ch 3 digital logic level in text book
 
 ## Multiplexer (Mux)
+pg 76 - 4x 3 register set
+
+## 5-6
+- if we want to read/write the clock has to be on
+- Data in - 3 minutes because 3 bits in each word
+- address decoder - is a selector - it determins which word is being read.
+- CS = chip select will always be 1 because we are selecting this chip
+- RD - read - if you want this to read you must set this to 1 but if you want it to write you set it to 0. You are either doing one or the other
+- OE - output enable - do you want the output yes or no?
+- O0, O1, O2 is the output
+
+- tri-state noninverting buffer  - its not an inverter it has 3 possible states:
+0
+1
+NOTHING
+
+nothing is not the same as 0
+
+Ex sink - cold, hot, no water
+
+## Multiplexer 5-7
+- show all the input and output values needed to write 010 to word 3
+
+## 5-8
+
+## 5-9
+
+## 5-10
+Does this arithmetic logic:
+AND 00
+OR
+NOT 
+FULL ADDITION (ie with carry in)
+
+|   ARITH LOGIC   |   ##   |
+| --------------- | ------:| 
+|   AND           |   00   |  
+|   OR            |   01   |   
+|   NOT           |   10   | 
+|   ADDITION      |   11   |
+
+## 5-11
+
+> start at 2:26
+
 
 A multiplexer("mux") is a combined circuit with:
 n control signals
