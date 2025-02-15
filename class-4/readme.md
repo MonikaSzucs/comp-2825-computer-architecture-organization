@@ -283,4 +283,13 @@ do steps 2 and 3 6000 times
 
 > no step 4 because we can start reading at any sector
 
-## When will step 4 be required? if  a question says starting at sector 0
+
+## Notes
+`Cylinder`
+- one line around the cricle
+- depth in one disk
+- all cylinders line up with teh disks below
+
+`track`
+- 5 disks are stacked (phyisical)
+- each disk is its own

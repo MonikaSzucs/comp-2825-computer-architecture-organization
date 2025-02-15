@@ -34,11 +34,11 @@ draw 2048 of? pie slices/sectors
 Step 1
 best case: 0ms
 worst case seek time: 20ms
-average case: (0+20)/2 = 10ms
+average case: (0+20)/2 = 10ms  // average seek time
 
 Step 2
-wait for sector 0 to spin
-to the read/write head 10/2 = 5ms
+wait for sector 0 to spin  // sector is one piece of the pie
+to the read/write head (10ms/rev)/2 = 5ms   // finding the start point
 
 Step 3
 wait time 10-12    mod 10 = 8ms
@@ -58,7 +58,7 @@ total for all cylinders
 5000 x 60 = 300,000ms
 
 add the initial seek and rotational latency:
-300,000 10 + 5 = 300,015ms
+300,000 + 10 + 5 = 300,015ms  // from step 1 and 2
 
 300.015s
 
@@ -73,13 +73,15 @@ Step 2
 wait for sector 0 to spin
 total time to read tracks on one cylinder
 10 + 12 + 10 + 12+ 10 = 54
+// we have 3 tracks so 3 of the 10's
+// can go to track 1 to track 2 to track 3 there are 2 distance there are 2 of the 12's
 
 Step 3
 seek time between adjacent cylinders: 1ms
 
 Step 4
 Repeat step 2 and 3 for all 5000 cylinders
-54 + 1 = 55ms
+54 + 1 = 55ms  // we added 1 to this because this is one of the actions that needs to be added in we multiply it all on the next line with 5000
 5000 x 55 = 275,000ms
 
 add the initial seek and rotational latency:
