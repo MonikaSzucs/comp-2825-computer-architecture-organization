@@ -196,7 +196,7 @@ multiple stages (lots of hardware), `working in parallel and in series`
 Ideal pipeline:
 - no bottle necks
 - no slowest stage
-- superscalar architecture: extra hardware at the slowest stage
+- superscalar architecture: extra hardware at the slowest stage in order to eliminate bottlenecks
 
 - you can also lengthen the pipeline
 The new pipeline maybe now has 15 stages that takes 30 seconds - deepending pipeline

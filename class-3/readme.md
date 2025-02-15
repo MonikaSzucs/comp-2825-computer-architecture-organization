@@ -32,7 +32,7 @@ A dictionary is called a `code` - is our dictionary of valid words
 reply: pub 
 - they screwed up so much they wanted to say house. This is one of the worst cases.
 
-- sometimes words are so far awpart it is easy to fix them.
+- sometimes words are so far appart it is easy to fix them.
 
 ## Example
 hospitalizatiom
@@ -43,7 +43,7 @@ but
 - there is so many other words like put, mut, hut etc would be hard to fix or know what the person really wanted to say
 
 ## Example
-- the further distance between targets the less like we will hit wrong target or make any mistakes like hitting the middle and it will be asier to detect and correct errors. Then we can tell where the person was trying to hit
+- the further distance between targets the less like we will hit wrong target or make any mistakes like hitting the middle and it will be easier to detect and correct errors. Then we can tell where the person was trying to hit
 
 Code A
 00000000
@@ -159,8 +159,8 @@ Hamming distance        # of detectable errors      # of correctable errors
 17                      16                          8
 h(variable for forumla) < h                         < h/2
 
-
 ------
+
 ## problem solving
 Hamming Code
 dataword: the raw to store
