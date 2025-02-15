@@ -161,8 +161,8 @@ doesn't matter which level you put r at
 as you go up in level it does  k * (n/m)
 r = the level in question
 k = time in seconds for the program to run at level 1
-m = the number of lower level language isntructions required to do the same work as one higher level instruction
-n the number of interpreter instructions required to transform each Highlevel language isntruction (into the equivalent set of lower level instructions)
+m = the number of lower level language instructions required to do the same work as one higher level instruction
+n the number of interpreter instructions required to transform each Highlevel language instruction (into the equivalent set of lower level instructions)
 
 Let m = 3
 Let n = 4

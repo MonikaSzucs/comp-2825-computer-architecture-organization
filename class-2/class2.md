@@ -88,8 +88,9 @@ look at drawing bottom of page
 
 ## There are two priniciples of locality
 1. Spacial
-
+- refers to the tendency of a program to access data or instructions that are located near each other in memory.
 2. Temporal
+- refers to the tendency of a program to access the same data or instructions repeatedly over a short period of time.
 
 drawings:
 1. The cpu wants one single word at a time. It issues a request to Main Memory for that word
@@ -102,9 +103,9 @@ Programs tend to run in order. If the CPU is requesting word 6000 right now, wor
 
 therefore bring to the cache, which has faster access times then Main Memory.
 
-- CPU is intercepted by the cache. The cache will ask if it has 6000 but CPU doesn't know CACHE exists. CPUS asks for 6000 but cache will check and if it does have it will give it him. If the CPU asks for 6000 every tiem teh cache will be checked first and if it is not there then cache will fatch a block of words around 6000 then forward that one request to the CPU. It will only forward 6000 but it is grabbing a group of the numbers because it might need something related to it.
+- CPU is intercepted by the cache. The cache will ask if it has 6000 but CPU doesn't know CACHE exists. CPUS asks for 6000 but cache will check and if it does have it will give it him. If the CPU asks for 6000 every time the cache will be checked first and if it is not there then cache will fetch a block of words around 6000 then forward that one request to the CPU. It will only forward 6000 but it is grabbing a group of the numbers because it might need something related to it.
 - Then i might ask for 6001 and cache will say I have it
-- but once it asks for 6006 it will check itself if it idoesn't have it then it will grab it and with some wrods around in to get more `hits` for later. Programs tend to run in `linear order`
+- but once it asks for 6006 it will check itself if it doesn't have it then it will grab it and with some words around in to get more `hits` for later. Programs tend to run in `linear order`
 
 The program of the CPU and everything - everything goes in order
 
@@ -144,13 +145,13 @@ The most likely word they will say about TW is tiger woods - `temporal locality`
 - ex we might use the same data over and over which calls it many times
 - then we might keep it in the register so we dont get it replaced in the near future.
 
-- In computer programming, progams tend to run in linear order. If the CPU, for example, requested word 6000, it is likely that soon words around 6000 will be requested. This is called the `principal of spatcial locality`. Because of the principle of spatial locality, negihboring words are fetched into the cache whenever memory words are, because cache serves words faster to the CPU. Analogy: If you hear people talking about Tiger Woods, you can guess words they will probably say inteh near future (2 minutes?): golf, cheater, titles, sports, nike. Another anaology: If you see someone at the store with taco shells in their basket, you can guess other items that will be in there too: beef, cilantro, cheese, sour cream.
+- In computer programming, progams tend to run in linear order. If the CPU, for example, requested word 6000, it is likely that soon words around 6000 will be requested. This is called the `principal of spatcial locality`. Because of the principle of spatial locality, negihboring words are fetched into the cache whenever memory words are, because cache serves words faster to the CPU. Analogy: If you hear people talking about Tiger Woods, you can guess words they will probably say in the near future (2 minutes?): golf, cheater, titles, sports, nike. Another anaology: If you see someone at the store with taco shells in their basket, you can guess other items that will be in there too: beef, cilantro, cheese, sour cream.
 
 There is also a `principle of temporal locality`, which means the same word being requested now, will likely be re-requested again soon. Because of the principle of temporal locality, the cache tries to keep recent words there (don't let them get evicted). Analogy: you hear someone in the hallway talking about Tiger Woods. You can guess some words they'll say (probably) in the near future: Tiger Woods.
 
 - CPU doesn't know the cache exists.
 
-- with no cache to boot up windows it will take how much longer? It took about 2 hours. It didn't havea problem doing it as long as you are patient. You dont need cache but then you will need a lot of patience.
+- with no cache to boot up windows it will take how much longer? It took about 2 hours. It didn't have a problem doing it as long as you are patient. You dont need cache but then you will need a lot of patience.
 
 `translation` takes the whole thing at once then runs it then you dont need the other program.
 
@@ -164,13 +165,13 @@ Refer to page 66 of the textbook
 
 Henry ford - assembly line
 
-Analogy: Acomputer pipeline is a set of multiple hardware devices in that FDE instruction in parallel and in serie, in order ot maximize instructional bandwidth.
-- its like an assembly line. How long does it take ot make a honda? 12 hours. How long doe sit take to make a Bugatti? 6 months
+Analogy: A computer pipeline is a set of multiple hardware devices in that FDE instruction in parallel and in serie, in order to maximize instructional bandwidth.
+- its like an assembly line. How long does it take to make a honda? 12 hours. How long does it take to make a Bugatti? 6 months
 - why is there a big difference? they don't use an assembly line 
 
-A car assembly line is a set of multiple hardware devices that build cars in paralel and in series, in order ot maximize car-creation bandwidth. Assembly, lines can build cars in a way that is `simpler cheaper and faster`
+A car assembly line is a set of multiple hardware devices that build cars in paralel and in series, in order to maximize car-creation bandwidth. Assembly, lines can build cars in a way that is `simpler cheaper and faster`
 
-assemply line to build cars = pipelien to FDE instruction
+assemply line to build cars = pipeline to FDE instruction
 goal: fast, cheap, simple process to maximize bandwidth
 multiple stages (lots of hardware), `working in parallel and in series`
 
@@ -218,7 +219,7 @@ Playland
 ... of a rollercoaster - they have lots of boats where people enter and exit constantly it just requires money
 
 Disneyland
-- ex like a small world peopel wait in line for long time you get a long time on the ride. They cut down teh wait time by adding more money to create more seats with no gaps so every 10 seconds someone comes on and off the ride.
+- ex like a small world people wait in line for long time you get a long time on the ride. They cut down the wait time by adding more money to create more seats with no gaps so every 10 seconds someone comes on and off the ride.
 
 ## What are the latency and bandwidth of a pipeline whos stages at 20ns, 15ns, 40ns, 5ns?
 Latency:    20+15+40+5 = 80ns/instruction
