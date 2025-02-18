@@ -92,7 +92,7 @@ This will periodically put out a 1 only when it is a 1 then writting can happen
 
 Ch 3 digital logic level in text book
 
-## Multiplexer (Mux)
+## Multiplexer (Mux) or combinational circuit
 pg 76 - 4x 3 register set
 
 ## 5-6
