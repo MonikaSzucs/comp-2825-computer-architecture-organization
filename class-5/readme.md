@@ -28,6 +28,8 @@ reset = R
 - we can make somekind of memory that is set or reset and stores (read/write) the current state
 - starts at state Q and doesn't change from state Q - its in whatever state it is in
 
+## Order
+
 SR Latch -> unclocked D Latch -> clocked D latch -> D flip flop
 
 ## SR Latch
