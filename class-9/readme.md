@@ -8,7 +8,7 @@ important: The CPU bus stores only ONE word per cycle.
 
 `PC`: program counter. A register that stores the main-memory address of the next instruction to be fetched, decoded and executed.
 
-`IR`: Instruction Register. STores the current instruction (the one just fetched, the one about to be decoded, and then executed)
+`IR`: Instruction Register. Stores the current instruction (the one just fetched, the one about to be decoded, and then executed)
 
 `F`: fetch instructions from main memory
 `D`: decoded what is detched
@@ -18,7 +18,7 @@ important: The CPU bus stores only ONE word per cycle.
 
 `MDR`: Stores memory data. Data that is going to the memory or data that's coming back from the memory.
 
-- the bus i sthe main player that is what connects all the pieces.
+- the bus is the main player that is what connects all the pieces.
 
 ## 9-2
 - fetching starts with program counter.
@@ -39,11 +39,11 @@ ALU knows addition so it will move it from 127 to 128 based on principle of spac
 
 Quiz question
 1. Why is the PC a two way arrow?
-- sometimes the PC talks to the rest of the system and her eis the value and soemtimes the systems talks to the PC to update the value. Read value/write value this is why its a two way arrow
+- sometimes the PC talks to the rest of the system and here is the value and sometimes the systems talks to the PC to update the value. Read value/write value this is why its a two way arrow
 
 - you will need to draw the arrows for a quiz.
 
-- IR is nto a two way arrow b/c it never puts things in teh bus it receives infro then passes to isntruction decoder. It fetches. tthen sends to decoder then gets executed in ALU
+- IR is not a two way arrow b/c it never puts things in the bus it receives info then passes to instruction decoder. It fetches. Then sends to decoder then gets executed in ALU
 
 - PC is left at 127 it is stuck in a loop. So we have to do something else actually.
 

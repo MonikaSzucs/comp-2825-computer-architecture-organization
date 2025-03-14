@@ -29,7 +29,7 @@ the period is 1 billionth second/cycle = 1ns/cycle
 ## 7-2
 - Clock rises and falls 100 million times per second
 - `Address bus`: the CPU sends the address it wants to read, to the memory
-- `Data bus`: the memory puts the data fromt eh memory cell at teh given address on teh data bus, to send it to the CPU (which requested it)
+- `Data bus`: the memory puts the data from the memory cell at the given address on the data bus, to send it to the CPU (which requested it)
 
 - MREQ (memory request), RD (read), and WAIT are "control signals" they are either low or high
 - low means "on"
@@ -45,7 +45,7 @@ the period is 1 billionth second/cycle = 1ns/cycle
 - the CPU does the Fetch Decode and execute (FDE) cycle. This diagram shows the fetch part
 - at the start (rising edge) of some cycle (call it T1), the CPU starts putting the main memory address of a word it wants onto the bus. After a few ns, the address is stable and usable by the memory. After a small delay, the CPU says I am making a memroy request about this address." 
 - for us in COMP 2825, it will always be READ.
-- The memory does some math and determines that its too slow ( the CPU is too fast), so at the start of the next cycle, the data will NOT be ready, so teh main memory tells teh CPU "wait this cycle out". The following cucle (in this example) at the start, the main memory knows that the fetched word WILL be ready in that cycle, so it tells the CPU NOT to wait that cycle (ie get the word). The data must reach the CPU and then settle down in order to be useful.
+- The memory does some math and determines that its too slow ( the CPU is too fast), so at the start of the next cycle, the data will NOT be ready, so the main memory tells the CPU "wait this cycle out". The following cycle (in this example) at the start, the main memory knows that the fetched word WILL be ready in that cycle, so it tells the CPU NOT to wait that cycle (ie get the word). The data must reach the CPU and then settle down in order to be useful.
 
 ## 7-4 and 7-5
 How do we know each cycle is 10ns? 100MHz we need to be told this
@@ -53,12 +53,12 @@ How do we know each cycle is 10ns? 100MHz we need to be told this
 If the memory determined that no wait was necessary, everything could be accomplished in 1.5 cycles instead of 2.5 cycles
 
 - events only happen at "rising" or "falling" edges
-- the data is there because its the time window where it is available. And the falling edge of T3 is the first opportunity to use that data during teh time window where it's ready.
+- the data is there because its the time window where it is available. And the falling edge of T3 is the first opportunity to use that data during the time window where it's ready.
 
 - it takes up to Tad seconds and up to 4nsec to become stable
-- the data takes a ong time to becoem stable the payload is requested by the CPU and its not available for very long time because the bus is slow, the memory is slow. 
+- the data takes a long time to become stable the payload is requested by the CPU and its not available for very long time because the bus is slow, the memory is slow. 
 
-- eventually it does like this. At the rising edge of the cycle it fetche sthe isntructions. Then from the Tad it is not stable and usable then it is. Takes up to 4ns to become stable. Then at that point the memory can assume its a read request. It cannot start reading the reqest before Tad because its not ready. It takes non zero time for the address to become stable. 
+- eventually it does like this. At the rising edge of the cycle it fetches the instructions. Then from the Tad it is not stable and usable then it is. Takes up to 4ns to become stable. Then at that point the memory can assume its a read request. It cannot start reading the reqest before Tad because its not ready. It takes non zero time for the address to become stable. 
 
 - Memory being requested. There is no memory request then the drop there is.
 - the read request at the drop there is a read
@@ -82,7 +82,7 @@ If the memory determined that no wait was necessary, everything could be accompl
 5 min earlier that is Tad
 
 ## 7-7
-- How long does memory have ot fetch a word from when the address is stable, with the one wait state as shown?
+- How long does memory have to fetch a word from when the address is stable, with the one wait state as shown?
 
 2.5 cycles * 10ns.cycle - tad - Tds
 25ns - 4ns - 2ns = 19ns
@@ -215,5 +215,33 @@ What about no wait states?
 15ns - 10ns = 5ns
 
 
+## 7-13
+How long does memory have to fetch a word
+a. from when the address is stable
+b. from when MREQ is asserted?
+40MHz bus
+4 wait states
+Tad 8ns
+Tds 9ns
+Tm 10ns
+Tml 11ns
 
+1.5 (always) _ 4 wait  = 5.5 cycles
 
+a. 
+40MHz -> 25ns/cycle
+1.5 + 4 = 5.5 cycles
+
+5.5 cycles * 25ns/cycle = 137.5ns - Tad - Tds
+137.5ns - 8ns - 9ns = 120.5ns
+
+b. Use `Tm`
+1cycle (always) + 4 waits = 5cycles - Tm - Tds
+
+5(25ns) - 10ns - 9ns = 125ns - 19ns = 106ns
+
+need to go again to use `Tml`
+
+120.5ns - 11ns = 109.5ns
+
+Answer the worst case (shortest deadline): `106ns` which is worse than 109.5ns
