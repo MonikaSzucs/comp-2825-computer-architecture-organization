@@ -1,0 +1,29 @@
+later in this course:
+lesson 11 
+
+small team project 
+work in teams of 3
+
+make a presentation + demonstration on Assembly 15-20 minutes
+
+EXAMPLES:
+https://asmtutor.com/
+
+get your idea OK'd by Jason soon: send your idea 
+and teammate names
+
+examples:
+get user input, write the length
+get user input, write it in uppercase
+get user input of 2 numbers, add them up, print the sum
+get user input of 1 number, print the numbers from 0 to that number
+get user input, print it in reverse
+
+all your teammates should use the same online ASM compiler
+e.g. https://www.mycompiler.io/online-assembly-asm-compiler
+
+Example presentation:
+
+- all 3 team members talk
+- give 5 minute overview of important ASM topics
+- 10-15 minutes: describe your program's code

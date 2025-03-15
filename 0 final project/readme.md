@@ -15,3 +15,13 @@ example:
 - now explain the whole program like im a first year CST student at BCIT in plain simple language
 
 ## Topic
+Monika, William, Zachary: prompt user for first and last names, print their initials
+
+m.szucs
+
+## How to run this
+for the stdin you will have to type in your first and last name all in one line. With a space in between. Then this program will format your name.
+
+Example:
+stdin: Monika Szucs
+output: m.szucs
