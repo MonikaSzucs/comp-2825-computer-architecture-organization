@@ -108,7 +108,7 @@ a. 50MHz but Tad is 12ns, Tds is 14ns
 20 x 2.5 = 50
 50ns - 12ns - 14ns = 24ns 
 
-Why do we minus Tds? because we need some buffer time.
+`Why do we minus Tds? because we need some buffer time.`
 
 Tad = cannot fetch from so far unstable address
 Tds = buffer time - data must arrive ahead of time, to settle down and be usable
