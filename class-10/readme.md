@@ -13,7 +13,7 @@
 - binary
 - hexadecimal
 
-`Mandatory rules`
+## `Mandatory rules`
 1. Show all your work
 2. work in power of 2
 3. always show the units
@@ -69,15 +69,17 @@ Log10(100,000) = 5 because 10^5 = 100,000
 Main memory is divided into cells. 
 Each cell is the same size (ex 1 byte)
 Each cell has an address.
+b means bit
+B means bytes
 `IN THIS COURSE, we will always assume that each word is one cell.`
 
 imagine a very small memory with 8 cells containing 1 byte each:
-How many bute are needed to address this memory?
+How many bite are needed to address this memory?
 
 Log base 2 (8) = 3
 
 Defintion of log is exponent ex
-2^3 - 8
+2^3 = 8
 Log base 2 (8) = 3
 
 |  |  |
@@ -91,14 +93,14 @@ Log base 2 (8) = 3
 | 1 byte | 110 | 
 | 1 byte | 111 | 
 
-A computer has a 32-bit memory address. There is 1 byte of data in each cell.
-
-How much total memory is there
+4. A computer has a 32-bit memory address. There is 1 byte of data in each cell.
+How much total memory is there?
 
 2^32 addresses can be made using 32 bits
-There is a total of 2^32 words /memory * 2^0 bytes/word = 2^32 bytes/memory - 4GB
+There is a total of 2^32 words /memory * 2^0 bytes/word = 2^32 bytes/memory = 4GB
+That is 4GB of RAM
 
-4. 1 cell per word; 64 bits per word; 20-bit memory address 
+5. 1 cell per word; 64 bits per word; 20-bit memory address 
 
 How much total memory is there?
 
@@ -106,15 +108,15 @@ How much total memory is there?
 
 2^20 addresses = 2^20 cells = 2^20 words/memory
 
-2^20 words/memory divided by 2^3 bytes/word = 2^23 bytes/memory = 8MB
+2^20 words/memory times by 2^3 bytes/word = 2^23 bytes/memory = 8MB
 
-5. 16-bit main memory address; 2MB total memory; 1 word/cell; WORD SIZE?
+6. 16-bit main memory address; 2MB total memory; 1 word/cell; WORD SIZE?
 
 1MB is 2^20 so 2MB 2^21
 
 2^21 B (bytes) / Memory divided by 2^16words/memory = 2^5 bytes per word
 
-6. 1kB total memory; 1 cell/word; 4 bytes/word; what are the first and last addresses?
+7. 1kB total memory; 1 cell/word; 4 bytes/word; what are the first and last addresses?
 
 2^10 Bytes/Memory divided by 2^2 Bytes/word = 2^8 Words/memory (256 words per memory)
 
@@ -165,6 +167,21 @@ log base 2(32) = 5
 | 11110 |  |
 | 11111 |  |   
 
+Direct-mapped cache
+- each block of main memory is mapped exactly to one spot in cache.
+- cache only works with groups
+- numbers must partk in a specific location one number per cell and works in pairs left + right (12 + 13)
+(8 + 9)
 
+The memory and CPU agree that 10011 means cell 19 but the cache sees it as a three field virtual address, in this order.
+- 2 bit tag
+- 2 bit tag
+- 1 bit word
+
+- 2 bit tab b/c mian memory is 2^2 times bigger than cache
+- 2 bit line b.c there are 2^2 lines per cache
+- 1 bit word because there are 2^1 words in each line of cache
+
+- addresses are 5 bits here because there are 2^5 cells in the main memory
 
 
