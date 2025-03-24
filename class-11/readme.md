@@ -25,7 +25,7 @@ To get directly log(base2)(total memory/total cache)
 2^4 lines/cache * 2^6 words/line = 2^10 words/cache
 2^20 words/memory divided by 2^10 words/cache = 2^10 caches memory
 
-What are the TAG, LINE and WORD values (in binary) of main memory word 5A17(HEX) for the previous architecture?
+What are the TAG, LINE and WORD values (in binary) of main memory word 391BB(HEX) for the previous architecture?
 
 answer:     0011 1001 0001 1011 1011
             0011100100  0110    111011
@@ -117,7 +117,18 @@ How many bits make up the TAG, LINE, and WORD fields of the virtual address:
 Memory: 1 cell/word, 256MB total memory, 25 bit address
 Cache: direct mapped, 512 lines, 4 words per line
 
-TAG (Caches/memory)  LINE (lines/cache)   WORD (Words/line)
+TAG (Caches/memory)     LINE (lines/cache)                      WORD (Words/line)
+14bits                  log(base2)512 = 2^9 lines = 2^9 bits    log(base2)4 = 2bits
+
+The entire address is 25 bits
+
+total memory 2^25 words/memory
+total cache: 2^9 lines/cache * 2^2 words/line = 2^11 words/cache
+
+TAG size 
+log(base2)(2^25 words/memory divided by 2^11 words/cache) = 2^14 caches/memory
+
+double check: 14bits + 9bits + 2bits must equal 25 bits; it does it seems correct.
 
 
 ## Question 6
@@ -125,16 +136,25 @@ How many bits make up the TAG, LINE, and WORD fields of the virtual address:
 Memory: 1 cell/word, 1MB total memory, 2 bytes per word
 Cache: direct mapped, 4kB, 64 bits in each line
 
-TAG (Caches/memory)  LINE (lines/cache)   WORD (Words/line)
+TAG (Caches/memory)     LINE (lines/cache)      WORD (Words/line)
+8bits                   9 bits                  2 bits
+the entire address is 19 bits
 
+TAG size
+log(base 2)(total memory/total cache) = 2^20 bytes/memory divided by 2^12 bytes/cache
+8 caches/memory giving a 8 bit TAG size
 
+2^20 bytes/memory divided by 2^1 bytes/word = 2^19 words/memory
+2^6 bits/line divided by 2^3 bits/byte = 2^3 bytes/line
+2^12 bytes/cache divded by 2^3 bytes/line = 2^9 line/cache: 9 bit line field
+2^3 bytes/line divided by 2^1 bytes/words = 2^2 words/line
 
-## Question 7
+8 + 9 + 2 = 19bits
 
 What are the TAG, LINE and WORD values (in binary) of main memory word 5A17(HEX) for the previous architecture?
 
 Answer  0101 1010 0001 01111        T-L-W sizees 8-9-2
-        000101101 0 0001011 11
+        00010110 100001011 11
 
 
 
