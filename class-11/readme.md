@@ -159,28 +159,105 @@ Answer  0101 1010 0001 01111        T-L-W sizees 8-9-2
 
 
 ## Question 8
-A computer has a main memory which has one cell per word. It has a direct-mapped cache which holds 4 lines, each of which holds two words. A program is executed which reads data in three passes from a set of address sequences as shown below in base ten format: 
+A computer has a main memory which has one cell per word. It has a direct-mapped cache which holds `4 lines`, each of which holds two words. A program is executed which reads data in three passes from a set of address sequences as shown below in base ten format: 
 
-Pass 1: 40, 42, 44, 40, 41, 41, 42, 100, 2, 10 
-Pass 2: 11, 12, 13, 11, 40, 41, 40, 100, 99, 101 
-Pass 3: 42, 41, 40, 41, 42, 42, 43, 17, 100, 41 
+- Pass 1: 40, 42, 44, `40`, `41`, `41`, `42`, 100, 2, 10 
+- Pass 2: `11`, 12, `13`, `11`, `40`, `41`, `40`, 100, 99, `101 `
+- Pass 3: 42, `41`, `40`, `41`, `42`, `42`, `43`, 17, `100`, 41 
+
+10 + 10 + 10 = `30 requests`
 
 Show the contents in tabular form of the cache at the end of each pass.
 
+REMEMBER:
+the cache determines ho wmany words are in a line
+memory pretends it is broken up into "blocks" of cells (the same number of words that are in a line)
+
+It is the memory block (the word + its neighbors) that is mapped directly a line in cache
+
+Show the content in tabular form of the cache at the end of each pass. Calculate the hit rate for this example. Assume the cache is initially empty.
+
+|  |  |  |  |
+| :---    |      :---:       |  :---:  |  :---:  |
+| Line 00 | 40-41            |  40-41  |  <del>40-41</del> <br> <del>16-17</del> <br> 40-41  |
+| Line 01 | <del>42-43</del> <br> <del>2-3</del> <br> 10-11 |  <del>10-11</del> <br> 98-99  | <del>98-99</del> <br> 42-43  |
+| Line 10 | <del>44-45</del> <br> 100-101 | <del>100-101</del> <br> <del>12-13</del> <br> 100-101 | 100-101 |
+| Line 11 |  |  |  |
+|  | Pass 1 | Pass 2 | Pass 3 |
+
+- this is bad because the last line of cache is empty but the other blocks of memory are fighting for the same line
+
+> Hit rate `18/30` a bit means the word was IN the cache
+
+> starts at line 0
+- MM Block 0 contains cell 0-1 indirectly mapped into cache line 0
+- MM block 1 contains cells 2-3 // line 1
+- MM block 2 contains cells 4-5 // line 2
+- MM block 3 contains cells 6-7 // line 3
+- MM block 4 contains cells 8-9 // line 0
+- MM block 5 contains cells 10-11 // line 1
+- MM block 8 contains cells 16-17 // line 0 (16%4)
+- MM block 20 contains cells 40-41 // line 0 (20%4)
+- MM block 50 contains cells 100-101 // line 2 (50%4)
+
+> notes:
+- The cache determines how many words are in a line
+- Memory pretends its broken up into blocks of cells (the same number of words that are in a line)
+- It is the MEMORY BLOCK (the word + its neighbors) that is mapped directly a line in cache
+- its called `thrashing` when they are hitting each other
 
 ## Question 9
 A computer has a main memory which has one cell per word. It has a direct-mapped cache which holds 4 lines, each of which holds four words. A program is executed which reads data in three passes from a set of address sequences as shown below in base ten format: 
+- Pass 1: 40, `42`, 44, `40`, `41`, `41`, `42`, 100, 2, 10 
+- Pass 2: `11`, 12, `13`, `11`, 40, `41`, `40`, `100`, 99, `101` 
 
-Pass 1: 40, 42, 44, 40, 41, 41, 42, 100, 2, 10 
-Pass 2: 11, 12, 13, 11, 40, 41, 40, 100, 99, 101 
+10 + 10 = `20 hit rate`
 
 Show the contents in tabular form of the cache at the end of each pass.
 
+|  |  |  |
+| :---    | :---: |  :---:  | 
+| Line 00 | 0-3   |  <del>0-3</del> <br> 96-99  | 
+| Line 01 | 100-103   |  100-103  | 
+| Line 10 | <del>40-43</del> <br> 8-11   |  <del>8-11</del> <br> 40-43  | 
+| Line 11 | 44-47   |  <del>44-47</del> <br> 12-15  | 
+|  | Pass 1   |  Pass 2  | 
+
+Hit rate: `5+7/20`
+
+MM block 0 contains cells 0-3 indirectly mapped into cache line 0
+MM block 1 contains cells 4-7 // line 1
+MM block 2 contains cells 8-11 // line 2
+MM block 3 contains cells 12-15 // line 3
+MM block 4 contains cells 16-19 // line 0
+MM block 5 contains cells 20-23 // line 1
+
+MM block 10 contains cells 40-43 // line 2 (10%4)
+MM block 11 contains cells 44-47 // line 1 (25%4)
+MM block 25 contains cells 100-103 // line 1 (25%4)
+
 ## Question 10
-A computer has a main memory which has one cell per word. It has a direct-mapped cache which holds 2 lines, each of which holds 8 words. A program is executed which reads data in three passes from a set of address sequences as shown below in base ten format: 
+A computer has a main memory which has one cell per word. It has a direct-mapped cache which holds `2 lines`, each of which holds `8 words`. A program is executed which reads data in three passes from a set of address sequences as shown below in base ten format: 
 
-Pass 1: 40, 42, 44, 40, 41, 41, 42, 100, 2, 10      hits so far: /10
-Pass 2: 11, 12, 13, 11, 40, 41, 40, 100, 99, 101    hits this pass: /10
+Show the contents in tabular form of the cache at the end of each pass calculate the hit rate for this example
 
-Show the contents in tabular form of the cache at the end of each pass. Calculate the hit rate for this example. Assume the cache is initially empty.
+- Pass 1: 40, `42`, `44`, `40`, `41`, `41`, `42`, 100, 2, 10  
+> hits 6/10 
+- Pass 2: `11`, `12`, `13`, `11`, 40, `41`, `40`, 100, `99`, `101`
+> hits 8/10
+
+>Total hit rate 14/20
+
+|  |  |  |
+| :---    | :---: |  :---:  | 
+| Line 0 | <del>40-47</del> <br> <del>96-103</del> <br> 0-7 |  <del>0-7</del> <br> <del>40-47</del> <br> 96-103  | 
+| Line 1 |  8-15  |  8-15  | 
+|  | Pass 1   |  Pass 2  | 
+
+MM block 0 contains cells 0-7 // is indirectly mapped into cache line 0
+MM block 1 contains cells 8-15 // line 1
+MM block 2 contains cells 16-23 // line 0
+MM block 3 contains cells 24-31 // line 1
+
+MM block 12 contains cells 96-103 // line 0 (12%2)
 
