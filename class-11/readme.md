@@ -258,6 +258,8 @@ MM block 0 contains cells 0-7 // is indirectly mapped into cache line 0
 MM block 1 contains cells 8-15 // line 1
 MM block 2 contains cells 16-23 // line 0
 MM block 3 contains cells 24-31 // line 1
+MM block 4 contains cells 32-29 // line 0
+MM block 5 contains cells 40-47 // line 1
 
 MM block 12 contains cells 96-103 // line 0 (12%2)
 
